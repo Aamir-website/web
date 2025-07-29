@@ -251,7 +251,7 @@ gsap.to(portraitRef.current, {
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
-    end: "bottom+=1500 center", // lamba scroll
+    end: "bottom+=100 center", // lamba scroll
     scrub: 2, // smooth aur slow effect
   }
 });
