@@ -453,10 +453,9 @@ ScrollTrigger.create({
       </div>
 
       {/* Portfolio Section */}
-      <div
-        ref={portfolioSectionRef}
-        className="relative min-h-screen w-full bg-white z-40 rounded-t-[3rem] opacity-0 translate-y-20 transition-all"
-      >
+      <div 
+         ref={portfolioSectionRef} 
+        className="relative min-h-screen w-full bg-white z-40 rounded-t-[3rem]">
         <div className="container mx-auto px-6 py-20">
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-bosenAlt text-black/90 mb-6 tracking-tight">
