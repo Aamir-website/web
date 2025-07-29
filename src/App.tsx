@@ -248,7 +248,7 @@ function App() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(portraitRef.current, {
-  y: 100, // ya 200 if you want smaller slide
+  y: 400, // ya 200 if you want smaller slide
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
