@@ -362,8 +362,8 @@ ScrollTrigger.create({
             <div 
               className="w-96 h-96 md:w-[30rem] md:h-[30rem] lg:w-[45rem] lg:h-[45rem] overflow-hidden opacity-0 animate-fade-in-delayed"
               style={{ 
-                width: '800px',
-                height: '800px', 
+                width: '1000px',
+                height: '1000px', 
                 animationDelay: '0.3s', 
                 animationFillMode: 'forwards'
               }}
