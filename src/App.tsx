@@ -253,7 +253,7 @@ function App() {
     trigger: heroRef.current,
     start: "top top",
     end: "top+=15000", // 🔁 reduce to make it slower & smoother
-    scrub: 2,        // 🔁 increase for smoother animation
+    scrub: 7,        // 🔁 increase for smoother animation
   }
 });
 
