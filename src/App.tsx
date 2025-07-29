@@ -401,7 +401,7 @@ ScrollTrigger.create({
         {/* Main Typography */}
         <div 
           ref={mainTextRef}
-          className="absolute inset-0 flex items-center justify-center z-30"
+          className="fixed inset-0 flex items-center justify-center z-30"
           style={{ top: '60%' }}
         >
           <div className="text-center z-10 px-6">
