@@ -235,6 +235,7 @@ function TestimonialBadge({ badge }: { badge: TestimonialBadge }) {
 function App() {
   const heroRef = useRef<HTMLDivElement>(null);
   const portraitRef = useRef<HTMLDivElement>(null);
+  const eyesRef = useRef<HTMLDivElement>(null);
   const backgroundTextRef = useRef<HTMLDivElement>(null);
   const portfolioSectionRef = useRef<HTMLDivElement>(null);
   const mainTextRef = useRef<HTMLDivElement>(null);
@@ -271,6 +272,16 @@ gsap.to(portfolioRef.current, {
   }
 });
 
+   gsap.to(eyesRef.current, {
+  y: 400, // ya 200 if you want smaller slide
+  scrollTrigger: {
+    trigger: heroRef.current,
+    start: "top top",
+    end: "top+=1500", // 🔁 reduce to make it slower & smoother
+    scrub: 3        // 🔁 increase for smoother animation
+  }
+});
+   
     gsap.to(mainTextRef.current, {
   y: 300, // ya 200 if you want smaller slide
   scrollTrigger: {
@@ -387,7 +398,7 @@ ScrollTrigger.create({
 
           {/* eyes */}
 <div 
-  ref={portraitRef}
+  ref={eyesRef}
   className="absolute inset-0 flex items-center justify-center z-20" 
   style={{ top: '20%', left: '1%' }}
 >
