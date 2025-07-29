@@ -261,7 +261,7 @@ function App() {
  // Fix image earlier when portfolio just starts to appear
 ScrollTrigger.create({
   trigger: portfolioRef.current, 
-  start: "top 90%", // ✅ Jald trigger
+  start: "top bottom", // ✅ Jald trigger
     end: "top top",   // 👈 Jab portfolio top ko touch kare
   toggleClass: {
     targets: portraitRef.current,
