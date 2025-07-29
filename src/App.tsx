@@ -271,17 +271,6 @@ gsap.to(portfolioRef.current, {
   }
 });
 
-   gsap.to(portfolioSectionRef.current, {
-  y: 400, // ya 200 if you want smaller slide
-  scrollTrigger: {
-    trigger: heroRef.current,
-    start: "bottom top",
-    end: "bottom+=150", // 🔁 reduce to make it slower & smoother
-    scrub: 10        // 🔁 increase for smoother animation
-  }
-});
-
-
  // Fix image earlier when portfolio just starts to appear
 ScrollTrigger.create({
   trigger: portfolioRef.current, 
@@ -318,6 +307,18 @@ ScrollTrigger.create({
 
   // Background text fade
   gsap.to(backgroundTextRef.current, {
+    y: -300,
+    opacity: 0,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "center top",
+      end: "bottom+=-100 top",
+      scrub: 1
+    }
+  });
+
+  // Background text fade
+  gsap.to(portfolioSectionRef.current, {
     y: -300,
     opacity: 0,
     scrollTrigger: {
