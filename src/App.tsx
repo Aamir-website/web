@@ -320,7 +320,7 @@ ScrollTrigger.create({
   // Background text fade
   gsap.to(portfolioSectionRef.current, {
     y: -300,
-    opacity: 0,
+    opacity: 100,
     scrollTrigger: {
       trigger: heroRef.current,
       start: "center top",
