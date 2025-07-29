@@ -363,7 +363,7 @@ ScrollTrigger.create({
       className="
         w-600px h-600px
         sm:w-80 sm:h-80 
-        md:w-[30rem] md:h-[30rem] 
+        md:w-[50rem] md:h-[50rem] 
         lg:w-[62.5rem] lg:h-[62.5rem] 
         overflow-hidden 
         opacity-0 
