@@ -112,3 +112,14 @@ body {
   transform: translateX(-50%);
   z-index: 20;
 }
+@layer utilities {
+  .top-mobile-65 {
+    top: 65%;
+  }
+
+  @media (min-width: 768px) {
+    .top-desktop-20 {
+      top: 20%;
+    }
+  }
+}
