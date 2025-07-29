@@ -364,7 +364,7 @@ ScrollTrigger.create({
         w-60 h-60 
         sm:w-80 sm:h-80 
         md:w-[30rem] md:h-[30rem] 
-        lg:w-[45rem] lg:h-[45rem] 
+        lg:w-[62.5rem] lg:h-[62.5rem] 
         overflow-hidden 
         opacity-0 
         animate-fade-in-delayed
