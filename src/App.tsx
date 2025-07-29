@@ -385,10 +385,10 @@ ScrollTrigger.create({
   </div>
 </div>
 
-      {/* Background Text - Aamir Naqvi at Bottom */}
+      {/* Background Text - Aamir Naqvi at Bottom */} 
 <div 
   ref={backgroundTextRef}
-  className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 top-mobile-5 top-desktop-85"
+  className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 top-mobile-65 top-desktop-85"
 >
   <div 
     className="text-[4rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/35 select-none leading-none opacity-0 animate-fade-in-delayed"
