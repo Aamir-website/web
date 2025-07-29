@@ -361,7 +361,7 @@ ScrollTrigger.create({
   <div className="relative"> 
     <div 
       className="
-        w-600px h-600px
+        w-[30] h-[30]
         sm:w-600px sm:h-600px 
         md:w-[50rem] md:h-[50rem] 
         lg:w-[62.5rem] lg:h-[62.5rem] 
