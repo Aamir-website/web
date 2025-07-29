@@ -252,7 +252,7 @@ function App() {
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
-    end: "top+=1500", // 🔁 reduce to make it slower & smoother
+    end: "top+=15000", // 🔁 reduce to make it slower & smoother
     scrub: 2,        // 🔁 increase for smoother animation
   }
 });
