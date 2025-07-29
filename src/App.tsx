@@ -247,6 +247,20 @@ function App() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.registerPlugin(ScrollTrigger);
 
+   // Animate portfolio section as it enters
+gsap.to(portfolioRef.current, {
+  y: 0,
+  opacity: 1,
+  duration: 1.2,
+  ease: "power3.out",
+  scrollTrigger: {
+    trigger: portfolioRef.current,
+    start: "top 80%", // start thoda pehle
+    toggleActions: "play none none reverse",
+    once: true
+  }
+});
+
   gsap.to(portraitRef.current, {
   y: 4000, // ya 200 if you want smaller slide
   scrollTrigger: {
