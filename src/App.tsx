@@ -333,7 +333,7 @@ function App() {
         <div 
           ref={portraitRef}
           className="absolute inset-0 flex items-center justify-center z-30" 
-          style={{ top: '-10%', left: '-4%' }}
+          style={{ top: '-10%', left: '-2.5%' }}
         >
           <div className="relative"> 
             <div 
