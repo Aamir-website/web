@@ -356,7 +356,7 @@ ScrollTrigger.create({
         <div 
           ref={portraitRef}
           className="absolute inset-0 flex items-center justify-center z-30" 
-          style={{ top: '-10%', left: '-1.8%' }}
+          style={{ top: '-20%', left: '-2%' }}
         >
           <div className="relative"> 
             <div 
