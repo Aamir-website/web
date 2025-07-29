@@ -260,7 +260,7 @@ function App() {
 
  ScrollTrigger.create({
   trigger: portfolioRef.current,
-  start: "top 15%",
+  start: "top 1005%",
   end: "top top",
   toggleClass: {
     targets: portraitRef.current,
