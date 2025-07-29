@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { Star, Maximize2, X } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import SplashScreen from './components/SplashScreen';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -244,21 +243,11 @@ function App() {
   const fixedBackgroundRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef();
 
-  // Loading state
-  const [isLoading, setIsLoading] = React.useState(true);
-
   // Mouse tracking state
   const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
 
-  // Handle loading completion
-  const handleLoadComplete = () => {
-    setIsLoading(false);
-  };
-
   // Mouse tracking effect
   useEffect(() => {
-    if (isLoading) return;
-
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.2) * 2; // -1 to 1
       const y = (e.clientY / window.innerHeight - 0.2) * 2; // -1 to 1
@@ -267,11 +256,9 @@ function App() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [isLoading]);
+  }, []);
 
  useEffect(() => {
-  if (isLoading) return;
-
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.registerPlugin(ScrollTrigger);
 
@@ -369,12 +356,8 @@ ScrollTrigger.create({
   return () => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   };
-}, [isLoading]);
+}, []);
 
-  // Show splash screen while loading
-  if (isLoading) {
-    return <SplashScreen onLoadComplete={handleLoadComplete} />;
-  }
 
   return (
     <div className="relative">
