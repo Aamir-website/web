@@ -267,7 +267,7 @@ gsap.to(portfolioRef.current, {
     trigger: heroRef.current,
     start: "top top",
     end: "top+=15000", // 🔁 reduce to make it slower & smoother
-    scrub: 5        // 🔁 increase for smoother animation
+    scrub: 3        // 🔁 increase for smoother animation
   }
 });
 
