@@ -105,3 +105,12 @@ body {
   background: rgba(251, 191, 36, 0.3);
   color: white;
 }
+.fixed-portrait {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 1;
+}
