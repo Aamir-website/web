@@ -258,17 +258,17 @@ function App() {
 });
 
 
- ScrollTrigger.create({
-  trigger: portfolioRef.current,
-  start: "top 1005%",
-  end: "top top",
+ // Fix image earlier when portfolio just starts to appear
+ScrollTrigger.create({
+  trigger: portfolioRef.current, 
+  start: "top bottom", // 🔁 was 'top center'
+  end: "top top",      // ✅ stops fixing once portfolio passes top
   toggleClass: {
     targets: portraitRef.current,
     className: "fixed-portrait"
   },
   markers: false
 });
-
 
   // Main text parallax
   gsap.to(mainTextRef.current, {
