@@ -271,6 +271,16 @@ gsap.to(portfolioRef.current, {
   }
 });
 
+    gsap.to(mainTextRef.current, {
+  y: 400, // ya 200 if you want smaller slide
+  scrollTrigger: {
+    trigger: heroRef.current,
+    start: "top top",
+    end: "top+=1500", // 🔁 reduce to make it slower & smoother
+    scrub: 3        // 🔁 increase for smoother animation
+  }
+});
+   
  // Fix image earlier when portfolio just starts to appear
 ScrollTrigger.create({
   trigger: portfolioRef.current, 
@@ -282,17 +292,6 @@ ScrollTrigger.create({
   },
   markers: false
 });
-
-  // Main text parallax
-  gsap.to(mainTextRef.current, {
-    y: 150,
-    scrollTrigger: {
-      trigger: heroRef.current,
-      start: "top top",
-      end: "bottom+=1000 center",
-      scrub: 1
-    }
-  });
 
   // Triangle parallax
   gsap.to(triangleRef.current, {
