@@ -511,7 +511,7 @@ ScrollTrigger.create({
               SOCIAL CONTENT
             </h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              {Array.from({ length: 24 }, (_, i) => (
+              {Array.from({ length: 12 }, (_, i) => (
                 <VerticalVideoPlayer 
                   key={i}
                   title={String(i + 1).padStart(2, '0')}
