@@ -410,15 +410,13 @@ ScrollTrigger.create({
   </div>
 </div>
 
-          {/* eyes */}
+         {/* eyes */}
 <div 
   ref={eyesRef}
   className="absolute inset-0 flex items-center justify-center z-20" 
   style={{ top: '20%', left: '1%' }}
 >
   <div className="relative"> 
-    transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`,
-    transition: 'transform 0.3s ease-out'
     <div 
       className="
         w-[35rem] h-[35rem]
