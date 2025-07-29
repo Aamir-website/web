@@ -105,3 +105,10 @@ body {
   background: rgba(251, 191, 36, 0.3);
   color: white;
 }
+.fixed-portrait {
+  position: fixed !important;
+  top: 100px; /* ya jo tumhe thik lage */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+}
