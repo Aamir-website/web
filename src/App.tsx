@@ -262,7 +262,7 @@ function App() {
   ScrollTrigger.create({
     trigger: portfolioRef.current,
     start: "top center",
-    end: "bottom center",
+    end: "bottom+=1000 center",
     toggleClass: {
       targets: portraitRef.current,
       className: "fixed-portrait"
