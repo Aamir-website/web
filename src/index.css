@@ -107,7 +107,7 @@ body {
 }
 .fixed-portrait {
   position: fixed !important;
-  top: -500px; /* ya jo tumhe thik lage */
+  top: -50000px; /* ya jo tumhe thik lage */
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
