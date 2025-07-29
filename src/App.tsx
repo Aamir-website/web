@@ -240,6 +240,8 @@ function App() {
   const mainTextRef = useRef<HTMLDivElement>(null);
   const triangleRef = useRef<HTMLDivElement>(null);
   const fixedBackgroundRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef();
+
 
  useEffect(() => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
