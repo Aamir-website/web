@@ -416,7 +416,6 @@ ScrollTrigger.create({
   className="absolute inset-0 flex items-center justify-center z-20" 
   style={{ top: '20%', left: '1%',
           transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)`,
-            transition: 'transform 0.4s ease-out'
          }}
 >
   <div className="relative"> 
