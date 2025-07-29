@@ -414,7 +414,7 @@ ScrollTrigger.create({
         animate-fade-in-delayed
       "
       style={{ 
-        animationDelay: '0.4s', 
+        animationDelay: '0.5s', 
         animationFillMode: 'forwards'
       }}
     > 
