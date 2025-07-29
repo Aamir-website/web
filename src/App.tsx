@@ -386,7 +386,7 @@ ScrollTrigger.create({
           style={{ top: '65%' }}
         >
           <div 
-            className="text-[4rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/30 select-none leading-none opacity-0 animate-fade-in-delayed"
+            className="text-[5rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/30 select-none leading-none opacity-0 animate-fade-in-delayed"
             style={{
               animationDelay: '0.1s',  
               animationFillMode: 'forwards',
