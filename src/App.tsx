@@ -267,7 +267,7 @@ ScrollTrigger.create({
     targets: portraitRef.current,
     className: "fixed-portrait"
   },
-  markers: true
+  markers: false
 });
 
   // Main text parallax
