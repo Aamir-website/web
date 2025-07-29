@@ -324,7 +324,7 @@ function App() {
         }}
       />
 
-      {/* Main Hero Section */}
+      {/* Main Hero Section */} 
       <div 
         ref={heroRef}
         className="relative min-h-screen w-full overflow-hidden bg-transparent"
@@ -333,7 +333,7 @@ function App() {
         <div 
           ref={portraitRef}
           className="absolute inset-0 flex items-center justify-center z-30" 
-          style={{ top: '-100%', left: '-1.8%' }}
+          style={{ top: '-10%', left: '-1.8%' }}
         >
           <div className="relative"> 
             <div 
