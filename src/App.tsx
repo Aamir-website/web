@@ -247,29 +247,28 @@ function App() {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   gsap.registerPlugin(ScrollTrigger);
 
-  // Slide down initially
   gsap.to(portraitRef.current, {
-    y: 300,
-    scrollTrigger: {
-      trigger: heroRef.current,
-      start: "top top",
-      end: "top+=400 center",
-      scrub: 1,
-    }
-  });
+  y: 300, // ya 200 if you want smaller slide
+  scrollTrigger: {
+    trigger: heroRef.current,
+    start: "top top",
+    end: "top+=600", // 🔁 reduce to make it slower & smoother
+    scrub: 2,        // 🔁 increase for smoother animation
+  }
+});
 
-  // Fix image when scroll reaches mid point (portfolio section)
-  ScrollTrigger.create({
-    trigger: portfolioRef.current,
-    start: "top center",
-    end: "bottom+=1000 center",
-    toggleClass: {
-      targets: portraitRef.current,
-      className: "fixed-portrait"
-    },
-    // optional visual debug
-    markers: false
-  });
+
+ // Fix image earlier when portfolio just starts to appear
+ScrollTrigger.create({
+  trigger: portfolioRef.current,
+  start: "top bottom", // 🔁 was 'top center'
+  end: "top top",      // ✅ stops fixing once portfolio passes top
+  toggleClass: {
+    targets: portraitRef.current,
+    className: "fixed-portrait"
+  },
+  markers: false
+});
 
   // Main text parallax
   gsap.to(mainTextRef.current, {
