@@ -388,7 +388,7 @@ ScrollTrigger.create({
           {/* eyes */}
 <div 
   ref={portraitRef}
-  className="absolute inset-0 flex items-center justify-center z-30" 
+  className="absolute inset-0 flex items-center justify-center z-20" 
   style={{ top: '20%', left: '1%' }}
 >
   <div className="relative"> 
