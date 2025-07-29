@@ -352,32 +352,38 @@ ScrollTrigger.create({
         ref={heroRef}
         className="relative min-h-screen w-full overflow-hidden bg-transparent"
       >
-        {/* Portrait */}
-        <div 
-          ref={portraitRef}
-          className="absolute inset-0 flex items-center justify-center z-30" 
-          style={{ top: '20%', left: '1%' }}
-        >
-          <div className="relative"> 
-            <div 
-              className="w-96 h-96 md:w-[30rem] md:h-[30rem] lg:w-[45rem] lg:h-[45rem] overflow-hidden opacity-0 animate-fade-in-delayed"
-              style={{ 
-                width: '1000px',
-                height: '1000px', 
-                animationDelay: '0.3s', 
-                animationFillMode: 'forwards'
-              }}
-            > 
-              <img 
-                src="/me.png"
-                alt="Portrait"
-                className="w-full h-full object-cover grayscale contrast-110 brightness-90"
-                style={{ transform: 'scale(1.05)' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent" />
-            </div> 
-          </div>
-        </div> 
+      {/* Portrait */}
+<div 
+  ref={portraitRef}
+  className="absolute inset-0 flex items-center justify-center z-30" 
+  style={{ top: '20%', left: '1%' }}
+>
+  <div className="relative"> 
+    <div 
+      className="
+        w-60 h-60 
+        sm:w-80 sm:h-80 
+        md:w-[30rem] md:h-[30rem] 
+        lg:w-[45rem] lg:h-[45rem] 
+        overflow-hidden 
+        opacity-0 
+        animate-fade-in-delayed
+      "
+      style={{ 
+        animationDelay: '0.3s', 
+        animationFillMode: 'forwards'
+      }}
+    > 
+      <img 
+        src="/me.png"
+        alt="Portrait"
+        className="w-full h-full object-cover grayscale contrast-110 brightness-90"
+        style={{ transform: 'scale(1.05)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent" />
+    </div> 
+  </div>
+</div>
 
         {/* Background Text - Aamir Naqvi at Bottom */}
         <div 
