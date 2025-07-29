@@ -276,7 +276,7 @@ gsap.to(portfolioRef.current, {
   scrollTrigger: {
     trigger: heroRef.current,
     start: "bottom top",
-    end: "bottom+=1500", // 🔁 reduce to make it slower & smoother
+    end: "bottom+=150", // 🔁 reduce to make it slower & smoother
     scrub: 10        // 🔁 increase for smoother animation
   }
 });
