@@ -401,7 +401,7 @@ ScrollTrigger.create({
         <div 
           ref={mainTextRef}
           className="absolute inset-0 flex items-center justify-center z-30"
-          style={{ top: '60%', left: '20%' }}
+          style={{ top: '60%', left: '5%' }}
         >
           <div className="text-center z-10 px-6">
             <div 
