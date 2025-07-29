@@ -247,7 +247,7 @@ function App() {
 
  // Parallax effect for portrait - smooth and limited
 gsap.to(portraitRef.current, {
-  y: 300, // zyada nahi, frame ke andar rahe
+  y: 400, // zyada nahi, frame ke andar rahe
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
