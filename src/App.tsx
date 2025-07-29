@@ -535,67 +535,12 @@ ScrollTrigger.create({
       {/* Portfolio Section */}
       <div 
          ref={portfolioSectionRef} 
-        className="relative min-h-screen w-full bg-white z-40 rounded-t-[3rem] overflow-hidden">
-        
-        {/* Texture Overlay */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-          <div 
-            className="w-full h-full"
-            style={{
-              backgroundImage: `
-                radial-gradient(circle at 25% 25%, #000 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, #000 1px, transparent 1px),
-                linear-gradient(45deg, transparent 49%, rgba(0,0,0,0.1) 50%, transparent 51%),
-                linear-gradient(-45deg, transparent 49%, rgba(0,0,0,0.1) 50%, transparent 51%)
-              `,
-              backgroundSize: '40px 40px, 40px 40px, 20px 20px, 20px 20px',
-              backgroundPosition: '0 0, 20px 20px, 0 0, 10px 10px'
-            }}
-          />
-        </div>
-
-        {/* Decorative Lines */}
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Top diagonal lines */}
-          <div className="absolute top-20 left-0 w-full h-px bg-gradient-to-r from-transparent via-black/10 to-transparent transform -rotate-1" />
-          <div className="absolute top-32 right-0 w-3/4 h-px bg-gradient-to-l from-transparent via-black/15 to-transparent transform rotate-1" />
-          
-          {/* Side accent lines */}
-          <div className="absolute top-1/4 left-8 w-px h-32 bg-gradient-to-b from-transparent via-black/20 to-transparent" />
-          <div className="absolute top-1/3 right-12 w-px h-24 bg-gradient-to-b from-transparent via-black/15 to-transparent" />
-          
-          {/* Bottom decorative elements */}
-          <div className="absolute bottom-40 left-1/4 w-16 h-px bg-black/10" />
-          <div className="absolute bottom-32 right-1/3 w-24 h-px bg-black/15" />
-          
-          {/* Corner accents */}
-          <div className="absolute top-16 right-16">
-            <div className="w-8 h-px bg-black/20 mb-2" />
-            <div className="w-4 h-px bg-black/15" />
-          </div>
-          
-          <div className="absolute bottom-16 left-16">
-            <div className="w-6 h-px bg-black/15 mb-1" />
-            <div className="w-10 h-px bg-black/10" />
-          </div>
-        </div>
+        className="relative min-h-screen w-full bg-white z-40 rounded-t-[3rem]">
         <div className="container mx-auto px-6 py-20">
           <div className="text-center mb-16">
-            {/* Section number */}
-            <div className="inline-block mb-4">
-              <span className="text-black/30 font-bosenAlt text-sm tracking-[0.3em] border border-black/10 px-4 py-1 rounded-full">
-                02
-              </span>
-            </div>
             <h2 className="text-5xl md:text-7xl lg:text-8xl font-bosenAlt text-black/90 mb-6 tracking-tight">
               PORTFOLIO
             </h2>
-            {/* Decorative line under title */}
-            <div className="flex items-center justify-center mb-6">
-              <div className="w-12 h-px bg-black/20" />
-              <div className="w-2 h-2 bg-black/30 rounded-full mx-4" />
-              <div className="w-12 h-px bg-black/20" />
-            </div>
             <p className="text-xl md:text-2xl text-black/60 max-w-3xl mx-auto leading-relaxed">
               Visual stories that shape brands and captivate audiences worldwide
             </p>
@@ -603,14 +548,6 @@ ScrollTrigger.create({
           
           {/* Show Reel Section */}
           <div className="mb-20">
-            {/* Section divider */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="w-8 h-px bg-black/10" />
-              <div className="mx-4">
-                <div className="w-1 h-1 bg-black/20 rounded-full" />
-              </div>
-              <div className="w-8 h-px bg-black/10" />
-            </div>
             <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
               SHOW REEL
             </h3>
@@ -625,18 +562,6 @@ ScrollTrigger.create({
 
           {/* 3x3 Grid of 16:9 Videos */}
           <div className="mb-20">
-            {/* Section divider */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="w-16 h-px bg-black/15" />
-              <div className="mx-6">
-                <div className="flex space-x-1">
-                  <div className="w-1 h-1 bg-black/20 rounded-full" />
-                  <div className="w-1 h-1 bg-black/30 rounded-full" />
-                  <div className="w-1 h-1 bg-black/20 rounded-full" />
-                </div>
-              </div>
-              <div className="w-16 h-px bg-black/15" />
-            </div>
             <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
               FEATURED WORK
             </h3>
@@ -652,14 +577,6 @@ ScrollTrigger.create({
 
           {/* 6x4 Grid of 9:16 Videos */}
           <div className="mb-20">
-            {/* Section divider */}
-            <div className="flex items-center justify-center mb-8">
-              <div className="w-6 h-px bg-black/10" />
-              <div className="mx-3">
-                <div className="w-px h-3 bg-black/15" />
-              </div>
-              <div className="w-6 h-px bg-black/10" />
-            </div>
             <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
               SOCIAL CONTENT
             </h3>
