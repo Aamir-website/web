@@ -261,8 +261,8 @@ function App() {
  // Fix image earlier when portfolio just starts to appear
 ScrollTrigger.create({
   trigger: portfolioRef.current, 
-  start: "top bottom", // 🔁 was 'top center'
-  end: "top top",      // ✅ stops fixing once portfolio passes top
+  start: "top 90%", // ✅ Jald trigger
+    end: "top top",   // 👈 Jab portfolio top ko touch kare
   toggleClass: {
     targets: portraitRef.current,
     className: "fixed-portrait"
