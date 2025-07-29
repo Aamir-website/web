@@ -385,6 +385,39 @@ ScrollTrigger.create({
   </div>
 </div>
 
+          {/* eyes */}
+<div 
+  ref={portraitRef}
+  className="absolute inset-0 flex items-center justify-center z-30" 
+  style={{ top: '20%', left: '1%' }}
+>
+  <div className="relative"> 
+    <div 
+      className="
+        w-[35rem] h-[35rem]
+        sm:w-600px sm:h-600px 
+        md:w-[50rem] md:h-[50rem] 
+        lg:w-[62.5rem] lg:h-[62.5rem] 
+        overflow-hidden 
+        opacity-0 
+        animate-fade-in-delayed
+      "
+      style={{ 
+        animationDelay: '0.3s', 
+        animationFillMode: 'forwards'
+      }}
+    > 
+      <img 
+        src="/eyes.png"
+        alt="Portrait"
+        className="w-full h-full object-cover grayscale contrast-110 brightness-90"
+        style={{ transform: 'scale(1.05)' }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent" />
+    </div> 
+  </div>
+</div>
+
         {/* Background Text - Aamir Naqvi at Bottom */}
         <div 
           ref={backgroundTextRef}
