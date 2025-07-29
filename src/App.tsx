@@ -360,7 +360,7 @@ ScrollTrigger.create({
         >
           <div className="relative"> 
             <div 
-              className="w-96 h-96 md:w-[35rem] md:h-[35rem] lg:w-[45rem] lg:h-[45rem] overflow-hidden opacity-0 animate-fade-in-delayed"
+              className="w-96 h-96 md:w-[35rem] md:h-[35rem] lg:w-[50rem] lg:h-[50rem] overflow-hidden opacity-0 animate-fade-in-delayed"
               style={{ 
                 width: '800px',
                 height: '800px', 
