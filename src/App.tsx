@@ -248,12 +248,12 @@ function App() {
   gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(portraitRef.current, {
-  y: 400, // ya 200 if you want smaller slide
+  y: 4000, // ya 200 if you want smaller slide
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
-    end: "top+=1500", // 🔁 reduce to make it slower & smoother
-    scrub: 1        // 🔁 increase for smoother animation
+    end: "top+=15000", // 🔁 reduce to make it slower & smoother
+    scrub: 10        // 🔁 increase for smoother animation
   }
 });
 
