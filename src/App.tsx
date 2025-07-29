@@ -272,7 +272,7 @@ gsap.to(portfolioRef.current, {
 });
 
     gsap.to(mainTextRef.current, {
-  y: 400, // ya 200 if you want smaller slide
+  y: 300, // ya 200 if you want smaller slide
   scrollTrigger: {
     trigger: heroRef.current,
     start: "top top",
