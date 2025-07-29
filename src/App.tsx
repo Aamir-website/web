@@ -245,14 +245,16 @@ function App() {
   // Clear any existing ScrollTrigger instances
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
 
- // Parallax effect for portrait - smooth and limited
-gsap.to(portraitRef.current, {
-  y: 400, // zyada nahi, frame ke andar rahe
-  scrollTrigger: {
-    trigger: heroRef.current,
-    start: "top top",
-    end: "bottom+=1800 center", // lamba scroll
-    scrub: 2, // smooth aur slow effect
+ScrollTrigger.create({
+  trigger: portraitRef.current,
+  start: "top top",
+  endTrigger: heroRef.current,
+  end: "bottom top",
+  onEnter: () => {
+    portraitRef.current.classList.add("fixed-portrait");
+  },
+  onLeaveBack: () => {
+    portraitRef.current.classList.remove("fixed-portrait");
   }
 });
 
