@@ -403,7 +403,7 @@ ScrollTrigger.create({
           className="absolute inset-0 flex items-center justify-center z-30"
           style={{ top: '60%' }}
         >
-          <div className="text-center z-10 px-6">
+          <div className="text-center z-10 px-10">
             <div 
               className="text-2xl md:text-4xl lg:text-5xl font-bosenAlt tracking-tight text-white/80 leading-tight opacity-0 animate-fade-in-delayed"
               style={{ 
