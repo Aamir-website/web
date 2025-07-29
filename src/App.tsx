@@ -385,23 +385,23 @@ ScrollTrigger.create({
   </div>
 </div>
 
-        {/* Background Text - Aamir Naqvi at Bottom */}
-        <div 
-          ref={backgroundTextRef}
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-          style={{ top: '65%' }}
-        >
-          <div 
-            className="text-[4rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/35 select-none leading-none opacity-0 animate-fade-in-delayed"
-            style={{
-              animationDelay: '0.1s',  
-              animationFillMode: 'forwards',
-              textShadow: '0 10px 20px rgba(0,0,0,0.2)'
-            }}
-          >
-            AAMIR NAQVI
-          </div>
-        </div>
+      {/* Background Text - Aamir Naqvi at Bottom */}
+<div 
+  ref={backgroundTextRef}
+  className="absolute inset-0 flex items-center justify-center pointer-events-none z-20 top-mobile-65 top-desktop-85"
+>
+  <div 
+    className="text-[4rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/35 select-none leading-none opacity-0 animate-fade-in-delayed"
+    style={{
+      animationDelay: '0.1s',  
+      animationFillMode: 'forwards',
+      textShadow: '0 10px 20px rgba(0,0,0,0.2)'
+    }}
+  >
+    AAMIR NAQVI
+  </div>
+</div>
+
         
         {/* Main Typography */}
         <div 
