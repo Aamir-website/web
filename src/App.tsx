@@ -243,6 +243,20 @@ function App() {
   const fixedBackgroundRef = useRef<HTMLDivElement>(null);
   const portfolioRef = useRef();
 
+  // Mouse tracking state
+  const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
+
+  // Mouse tracking effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2; // -1 to 1
+      const y = (e.clientY / window.innerHeight - 0.5) * 2; // -1 to 1
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
  useEffect(() => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -403,6 +417,8 @@ ScrollTrigger.create({
   style={{ top: '20%', left: '1%' }}
 >
   <div className="relative"> 
+    transform: `translate(${mousePosition.x * 15}px, ${mousePosition.y * 15}px)`,
+    transition: 'transform 0.3s ease-out'
     <div 
       className="
         w-[35rem] h-[35rem]
@@ -433,7 +449,11 @@ ScrollTrigger.create({
         <div 
           ref={backgroundTextRef}
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-          style={{ top: '65%' }}
+          style={{ 
+            top: '65%',
+            transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 8}px)`,
+            transition: 'transform 0.4s ease-out'
+          }}
         >
           <div  
             className="text-[4rem] md:text-[10rem] lg:text-[20rem] font-bosenAlt text-black/35 select-none leading-none opacity-0 animate-fade-in-delayed"
