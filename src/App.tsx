@@ -262,7 +262,7 @@ function App() {
 ScrollTrigger.create({
   trigger: portfolioRef.current,
   start: "top center", // 🔁 was 'top center'
-  end: "top 80%",      // ✅ stops fixing once portfolio passes top
+  end: "top 20%",      // ✅ stops fixing once portfolio passes top
   toggleClass: {
     targets: portraitRef.current,
     className: "fixed-portrait"
