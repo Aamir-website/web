@@ -275,8 +275,8 @@ gsap.to(portfolioRef.current, {
   y: 400, // ya 200 if you want smaller slide
   scrollTrigger: {
     trigger: heroRef.current,
-    start: "top top",
-    end: "top+=1500", // 🔁 reduce to make it slower & smoother
+    start: "bottom top",
+    end: "bottom+=1500", // 🔁 reduce to make it slower & smoother
     scrub: 3        // 🔁 increase for smoother animation
   }
 });
