@@ -447,7 +447,7 @@ ScrollTrigger.create({
         {/* Bottom Triangle Shape */}
         <div 
           ref={triangleRef}
-          className="absolute bottom-4 left-[50%] transform -translate-x-1/2 opacity-0 animate-fade-in-delayed z-30"
+          className="absolute bottom-4 left-[48%] transform -translate-x-1/2 opacity-0 animate-fade-in-delayed z-30"
           style={{ 
             animationDelay: '3.5s', 
             animationFillMode: 'forwards',
