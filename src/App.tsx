@@ -241,24 +241,35 @@ function App() {
   const triangleRef = useRef<HTMLDivElement>(null);
   const fixedBackgroundRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-  // Clear any existing ScrollTrigger instances
+ useEffect(() => {
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  gsap.registerPlugin(ScrollTrigger);
 
-// Parallax effect for portrait - smooth and limited
-gsap.to(portraitRef.current, {
-  y: 700, // zyada nahi, frame ke andar rahe
-  scrollTrigger: {
-    trigger: heroRef.current,
-    start: "top top",
-    end: "bottom+=1000 center", // lamba scroll
-    scrub: 1, // smooth aur slow effect
-  }
-});
+  // Slide down initially
+  gsap.to(portraitRef.current, {
+    y: 300,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "top top",
+      end: "top+=400 center",
+      scrub: 1,
+    }
+  });
 
+  // Fix image when scroll reaches mid point (portfolio section)
+  ScrollTrigger.create({
+    trigger: portfolioRef.current,
+    start: "top center",
+    end: "bottom center",
+    toggleClass: {
+      targets: portraitRef.current,
+      className: "fixed-portrait"
+    },
+    // optional visual debug
+    markers: false
+  });
 
-
-  // Parallax effect for main text - moves down with portrait
+  // Main text parallax
   gsap.to(mainTextRef.current, {
     y: 150,
     scrollTrigger: {
@@ -269,7 +280,7 @@ gsap.to(portraitRef.current, {
     }
   });
 
-  // Parallax effect for triangle - moves down with other elements
+  // Triangle parallax
   gsap.to(triangleRef.current, {
     y: 100,
     scrollTrigger: {
@@ -280,19 +291,18 @@ gsap.to(portraitRef.current, {
     }
   });
 
-  // Animate AAMIR NAQVI text upward and fade out
+  // Background text fade
   gsap.to(backgroundTextRef.current, {
     y: -300,
     opacity: 0,
     scrollTrigger: {
       trigger: heroRef.current,
       start: "center top",
-      end: "bottom+=-100 top", // long scroll to complete fade
+      end: "bottom+=-100 top",
       scrub: 1
     }
   });
 
-  // Cleanup scroll triggers when component unmounts
   return () => {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   };
