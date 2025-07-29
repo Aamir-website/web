@@ -1,0 +1,603 @@
+import React, { useEffect, useRef } from 'react';
+import { Star, Maximize2, X } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+interface VideoPlayerProps {
+  src?: string;
+  title: string;
+  isShowreel?: boolean;
+}
+
+function VideoPlayer({ src, title, isShowreel = false }: VideoPlayerProps) {
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleVideoClick = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+      } else {
+        videoRef.current.play();
+        setIsPlaying(true);
+      }
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      if (containerRef.current?.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  if (src) {
+    return (
+      <div 
+        ref={containerRef}
+        className={`relative group cursor-pointer aspect-video rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}
+        onClick={isShowreel ? handleVideoClick : undefined}
+      >
+        <video
+          ref={videoRef}
+          src={src}
+          autoPlay={false}
+          muted={false}
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        />
+        {isShowreel && !isPlaying && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+              <div className="w-0 h-0 border-l-[12px] border-r-0 border-t-[8px] border-b-[8px] border-l-white border-t-transparent border-b-transparent ml-1"></div>
+            </div>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+        <button
+          onClick={toggleFullscreen}
+          className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+        >
+          {isFullscreen ? (
+            <X size={16} className="text-white" />
+          ) : (
+            <Maximize2 size={16} className="text-white" />
+          )}
+        </button>
+        <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <span className="text-white font-bosenAlt text-sm bg-black/50 px-3 py-1 rounded-full">
+            {title}
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  // Placeholder for videos without src
+  return (
+    <div className={`relative group cursor-pointer ${isShowreel ? 'aspect-video' : 'aspect-video'} rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105`}>
+      <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-12 h-12 mx-auto mb-3 bg-white/10 rounded-full flex items-center justify-center">
+            <div className="w-0 h-0 border-l-[8px] border-r-0 border-t-[6px] border-b-[6px] border-l-white border-t-transparent border-b-transparent ml-1"></div>
+          </div>
+          <span className="text-white/60 font-bosenAlt text-sm">{title}</span>
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+      <button
+        onClick={() => {}}
+        className="absolute top-4 right-4 w-10 h-10 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+      >
+        <Maximize2 size={16} className="text-white" />
+      </button>
+    </div>
+  );
+}
+
+function VerticalVideoPlayer({ title }: { title: string }) {
+  const [isFullscreen, setIsFullscreen] = React.useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const toggleFullscreen = () => {
+    if (!isFullscreen) {
+      if (containerRef.current?.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  return (
+    <div 
+      ref={containerRef}
+      className="relative group cursor-pointer aspect-[9/16] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+    >
+      <div className="w-full h-full bg-gradient-to-b from-gray-700 to-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 mx-auto mb-2 bg-white/10 rounded-full flex items-center justify-center">
+            <div className="w-0 h-0 border-l-[6px] border-r-0 border-t-[4px] border-b-[4px] border-l-white border-t-transparent border-b-transparent ml-0.5"></div>
+          </div>
+          <span className="text-white/60 font-bosenAlt text-xs">{title}</span>
+        </div>
+      </div>
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+      <button
+        onClick={toggleFullscreen}
+        className="absolute top-2 right-2 w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 z-10"
+      >
+        {isFullscreen ? (
+          <X size={12} className="text-white" />
+        ) : (
+          <Maximize2 size={12} className="text-white" />
+        )}
+      </button>
+      <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <span className="text-white font-bosenAlt text-xs bg-black/50 px-2 py-1 rounded-full">
+          {title}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+interface TestimonialBadge {
+  word: string;
+  rating: number;
+  attribution: string;
+  position: { top: string; left: string };
+  delay: number;
+}
+
+const testimonialBadges: TestimonialBadge[] = [
+  { word: "VISIONARY", rating: 5, attribution: "— Forbes", position: { top: "10%", left: "25%" }, delay: 1.2 },
+  { word: "MASTERFUL", rating: 5, attribution: "— Design Week", position: { top: "15%", left: "70%" }, delay: 1.8 },
+  { word: "BRILLIANT", rating: 5, attribution: "— Creative Review", position: { top: "25%", left: "20%" }, delay: 2.4 },
+  { word: "INNOVATIVE", rating: 5, attribution: "— Fast Company", position: { top: "30%", left: "87%" }, delay: 3.0 },
+  { word: "ICONIC", rating: 5, attribution: "— Dezeen", position: { top: "50%", left: "20%" }, delay: 2.1 },
+  { word: "PROFOUND", rating: 5, attribution: "— AIGA", position: { top: "47%", left: "84%" }, delay: 3.3 },
+  { word: "STUNNING", rating: 5, attribution: "— Vogue", position: { top: "12%", left: "10%" }, delay: 2.7 },
+  { word: "REVOLUTIONARY", rating: 5, attribution: "— Wired", position: { top: "40%", left: "2%" }, delay: 2.0 },
+  { word: "CAPTIVATING", rating: 5, attribution: "— Elle", position: { top: "55%", left: "68%" }, delay: 3.9 },
+  { word: "CREATIVE", rating: 5, attribution: "— Inkwellmedia", position: { top: "35%", left: "73%" }, delay: 3.9 }
+];
+
+function TestimonialBadge({ badge }: { badge: TestimonialBadge }) {
+  return (
+    <div 
+      className="absolute opacity-0 animate-fade-in-delayed group cursor-default"
+      style={{ 
+        top: badge.position.top, 
+        left: badge.position.left,
+        animationDelay: `${badge.delay}s`,
+        animationFillMode: 'forwards'
+      }}
+    >
+      <div className="text-left">
+        {/* Stars */}
+        <div className="flex mb-1">
+          {[...Array(badge.rating)].map((_, i) => (
+            <Star 
+              key={i} 
+              size={10} 
+              className="fill-white/20 text-white/70 mr-0.5" 
+            /> 
+          ))}
+        </div>
+
+       <div className="relative inline-block text-[1.6rem] sm:text-2xl font-bosenAlt uppercase tracking-wide leading-none">
+          {/* Actual Word with Shine Animation */}
+          <span className="relative z-10 text-white/10 animate-shine">{badge.word}</span>
+        </div>
+
+        {/* Attribution */}
+        <div className="mt-1 text-sm text-white/20 font-light tracking-wide">
+          {badge.attribution}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const portraitRef = useRef<HTMLDivElement>(null);
+  const backgroundTextRef = useRef<HTMLDivElement>(null);
+  const portfolioSectionRef = useRef<HTMLDivElement>(null);
+  const mainTextRef = useRef<HTMLDivElement>(null);
+  const triangleRef = useRef<HTMLDivElement>(null);
+  const fixedBackgroundRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+  // Clear any existing ScrollTrigger instances
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+  // Parallax effect for portrait - moves down slowly
+  gsap.to(portraitRef.current, {
+    y: 200,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "top top",
+      end: "bottom+=1000 center", // extended scroll for smooth parallax
+      scrub: 1
+    }
+  });
+
+  // Parallax effect for main text - moves down with portrait
+  gsap.to(mainTextRef.current, {
+    y: 150,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "top top",
+      end: "bottom+=1000 center",
+      scrub: 1
+    }
+  });
+
+  // Parallax effect for triangle - moves down with other elements
+  gsap.to(triangleRef.current, {
+    y: 100,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "top top",
+      end: "bottom+=1000 center",
+      scrub: 1
+    }
+  });
+
+  // Animate AAMIR NAQVI text upward and fade out
+  gsap.to(backgroundTextRef.current, {
+    y: -300,
+    opacity: 0,
+    scrollTrigger: {
+      trigger: heroRef.current,
+      start: "center top",
+      end: "bottom+=-100 top", // long scroll to complete fade
+      scrub: 1
+    }
+  });
+
+  // Cleanup scroll triggers when component unmounts
+  return () => {
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
+
+
+  return (
+    <div className="relative">
+      {/* Fixed Background */}
+      <div 
+        ref={fixedBackgroundRef}
+        className="fixed inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url('/bg.png')`,
+          backgroundAttachment: 'fixed',
+          zIndex: -1
+        }}
+      />
+
+      {/* Main Hero Section */}
+      <div 
+        ref={heroRef}
+        className="relative min-h-screen w-full overflow-hidden bg-transparent"
+      >
+        {/* Portrait */}
+        <div 
+          ref={portraitRef}
+          className="absolute inset-0 flex items-center justify-center z-30" 
+          style={{ top: '-10%' }}
+        >
+          <div className="relative"> 
+            <div 
+              className="w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] overflow-hidden opacity-0 animate-fade-in-delayed"
+              style={{ 
+                width: '800px',
+                height: '800px', 
+                animationDelay: '0.3s', 
+                animationFillMode: 'forwards'
+              }}
+            > 
+              <img 
+                src="/me.png"
+                alt="Portrait"
+                className="w-full h-full object-cover grayscale contrast-110 brightness-90"
+                style={{ transform: 'scale(1.05)' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent" />
+            </div> 
+          </div>
+        </div> 
+
+        {/* Background Text - Aamir Naqvi at Bottom */}
+        <div 
+          ref={backgroundTextRef}
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
+          style={{ top: '65%' }}
+        >
+          <div 
+            className="text-[4rem] md:text-[10rem] lg:text-[15rem] font-bosenAlt text-black/30 select-none leading-none opacity-0 animate-fade-in-delayed"
+            style={{
+              animationDelay: '0.1s',  
+              animationFillMode: 'forwards',
+              textShadow: '0 10px 20px rgba(0,0,0,0.2)'
+            }}
+          >
+            AAMIR NAQVI
+          </div>
+        </div>
+        
+        {/* Main Typography */}
+        <div 
+          ref={mainTextRef}
+          className="absolute inset-0 flex items-center justify-center z-30"
+          style={{ top: '60%' }}
+        >
+          <div className="text-center z-10 px-6">
+            <div 
+              className="text-2xl md:text-4xl lg:text-5xl font-bosenAlt tracking-tight text-white/80 leading-tight opacity-0 animate-fade-in-delayed"
+              style={{ 
+                animationDelay: '0.8s', 
+                animationFillMode: 'forwards',
+                textShadow: '0 15px 30px rgba(0,0,0,0.5)'
+              }}
+            >
+              I EDIT
+            </div>
+            <div 
+              className="text-2xl md:text-3xl lg:text-4xl font-bosenAlt tracking-tight text-white/80 leading-tight mt-2 opacity-0 animate-fade-in-delayed"
+              style={{ 
+                animationDelay: '1.1s', 
+                animationFillMode: 'forwards',
+                textShadow: '0 15px 30px rgba(0,0,0,0.5)'
+              }}
+            >
+              VISUALS THAT
+            </div>
+            <div 
+              className="text-2xl md:text-4xl lg:text-5xl font-bosenAlt tracking-tight text-white leading-tight mt-2 opacity-0 animate-fade-in-delayed"
+              style={{ 
+                animationDelay: '1.4s', 
+                animationFillMode: 'forwards',
+                textShadow: '0 15px 30px rgba(0,0,0,0.5)'
+              }}
+            >
+              BUILD BRANDS
+            </div>
+          </div>
+        </div>
+
+        {/* Floating Testimonial Badges */}
+        <div className="fixed inset-0 z-20 pointer-events-none">
+          {testimonialBadges.map((badge, index) => (
+            <TestimonialBadge key={index} badge={badge} />
+          ))}
+        </div>
+
+        {/* Bottom Triangle Shape */}
+        <div 
+          ref={triangleRef}
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 opacity-0 animate-fade-in-delayed z-30"
+          style={{ 
+            animationDelay: '3.5s', 
+            animationFillMode: 'forwards',
+            filter: 'drop-shadow(0 10px 20px rgba(34, 211, 238, 0.3))'
+          }}
+        >
+          <div className="flex flex-col items-center">
+            <div 
+              className="w-0 h-0 border-l-[12px] border-r-[12px] border-t-[20px] border-l-transparent border-r-transparent border-t-cyan-400 animate-bounce-triangle"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Portfolio Section */}
+      <div 
+         ref={portfolioSectionRef}
+        className="relative min-h-screen w-full bg-white z-40 rounded-t-[3rem]">
+        <div className="container mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-7xl lg:text-8xl font-bosenAlt text-black/90 mb-6 tracking-tight">
+              PORTFOLIO
+            </h2>
+            <p className="text-xl md:text-2xl text-black/60 max-w-3xl mx-auto leading-relaxed">
+              Visual stories that shape brands and captivate audiences worldwide
+            </p>
+          </div>
+          
+          {/* Show Reel Section */}
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
+              SHOW REEL
+            </h3>
+            <div className="max-w-4xl mx-auto">
+              <VideoPlayer 
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                title="SHOW REEL 2024"
+                isShowreel={true}
+              />
+            </div>
+          </div>
+
+          {/* 3x3 Grid of 16:9 Videos */}
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
+              FEATURED WORK
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {Array.from({ length: 9 }, (_, i) => (
+                <VideoPlayer 
+                  key={i}
+                  title={`PROJECT ${String(i + 1).padStart(2, '0')}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* 6x4 Grid of 9:16 Videos */}
+          <div className="mb-20">
+            <h3 className="text-3xl md:text-4xl font-bosenAlt text-black/80 mb-8 text-center tracking-tight">
+              SOCIAL CONTENT
+            </h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {Array.from({ length: 24 }, (_, i) => (
+                <VerticalVideoPlayer 
+                  key={i}
+                  title={String(i + 1).padStart(2, '0')}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="relative min-h-screen w-full z-10">
+        {/* Fixed Background for Contact Section */}
+        <div 
+          className="fixed inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url('/public/bg.png')`,
+            backgroundAttachment: 'fixed',
+            zIndex: -1
+          }}
+        />
+  
+        {/* Contact Content */}
+        <div className="relative bg-transparent">
+          <div className="container mx-auto px-6 py-20">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-bosenAlt text-white/90 mb-6 tracking-tight drop-shadow">
+                CONTACT
+              </h2>
+              <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                Let's create something extraordinary together
+              </p>
+            </div>
+            
+            {/* Contact Form */}
+            <div className="max-w-2xl mx-auto">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-white/80 font-bosenAlt text-sm uppercase tracking-wide mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 backdrop-blur-sm focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                      placeholder="Your name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-white/80 font-bosenAlt text-sm uppercase tracking-wide mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 backdrop-blur-sm focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-white/80 font-bosenAlt text-sm uppercase tracking-wide mb-2">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 backdrop-blur-sm focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300"
+                    placeholder="Project inquiry"
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="message" className="block text-white/80 font-bosenAlt text-sm uppercase tracking-wide mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={6}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 backdrop-blur-sm focus:outline-none focus:border-white/40 focus:bg-white/15 transition-all duration-300 resize-none"
+                    placeholder="Tell me about your project..."
+                  ></textarea>
+                </div>
+                
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center px-8 py-4 bg-white/20 hover:bg-white/30 border border-white/30 hover:border-white/50 rounded-lg text-white font-bosenAlt text-sm uppercase tracking-wide backdrop-blur-sm transition-all duration-300 hover:scale-105"
+                  >
+                    Send Message
+                  </button>
+                </div>
+              </form>
+              
+              {/* Contact Info */}
+              <div className="mt-16 text-center">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div>
+                    <h4 className="font-bosenAlt text-white/80 text-sm uppercase tracking-wide mb-2">Email</h4>
+                    <p className="text-white/60">hello@aamirnaqvi.com</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bosenAlt text-white/80 text-sm uppercase tracking-wide mb-2">Phone</h4>
+                    <p className="text-white/60">+1 (555) 123-4567</p>
+                  </div>
+                  <div>
+                    <h4 className="font-bosenAlt text-white/80 text-sm uppercase tracking-wide mb-2">Location</h4>
+                    <p className="text-white/60">New York, NY</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
